@@ -1,10 +1,9 @@
-// Corrected: Use 'vitest/globals' for proper type detection
-/// <reference types="vitest/globals" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig(() => {
   return {
+    base: './', // Add this line for relative pathing in static builds
     build: {
       outDir: 'build',
     },

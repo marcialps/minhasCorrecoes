@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import TextInput from './TextInput';
 import Select from './Select';
@@ -136,8 +135,8 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({
 
 
   return (
-    <form onSubmit={handleGenerate} className="bg-white p-6 rounded-lg shadow-xl border border-blue-100">
-      <h2 className="text-2xl font-bold text-blue-700 mb-6">Informações da Atividade e Aluno</h2>
+    <form onSubmit={handleGenerate} className="bg-gray-800 p-6 rounded-lg shadow-xl border border-blue-700">
+      <h2 className="text-2xl font-bold text-blue-400 mb-6">Informações da Atividade e Aluno</h2>
 
       <TextInput
         id="studentName"
@@ -167,7 +166,7 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({
       />
 
       <div className="mb-4">
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label className="block text-sm font-medium text-gray-300 mb-1">
           Enunciado da Atividade
         </label>
         <div className="flex space-x-2 mb-2">
@@ -238,7 +237,7 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({
               className="mt-2"
             />
             <FileUpload onFileRead={handleFileRead} isLoading={isLoading} />
-            {newActivityContent && <p className="text-sm text-gray-600 mb-2">Conteúdo do arquivo carregado (pré-visualização limitada para .txt): <span className="italic">{newActivityContent.substring(0, 100)}...</span></p>}
+            {newActivityContent && <p className="text-sm text-gray-300 mb-2">Conteúdo do arquivo carregado (pré-visualização limitada para .txt): <span className="italic">{newActivityContent.substring(0, 100)}...</span></p>}
           </>
         )}
 

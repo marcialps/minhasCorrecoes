@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { StudentFeedback, GeneratedFeedbackContent } from '../types';
 import Button from './Button';
@@ -22,7 +21,7 @@ const HistoryPanel: React.FC<HistoryPanelProps> = ({ feedbackHistory, onClearHis
 
   if (feedbackHistory.length === 0) {
     return (
-      <div className="bg-white p-6 rounded-lg shadow-md text-center text-gray-500 border border-gray-200">
+      <div className="bg-gray-800 p-6 rounded-lg shadow-md text-center text-gray-400 border border-gray-700">
         Nenhum histórico de feedback ainda.
       </div>
     );
@@ -43,21 +42,21 @@ const HistoryPanel: React.FC<HistoryPanelProps> = ({ feedbackHistory, onClearHis
 
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-xl border border-blue-100">
-      <h2 className="text-2xl font-bold text-blue-700 mb-4 flex justify-between items-center">
+    <div className="bg-gray-800 p-6 rounded-lg shadow-xl border border-blue-700">
+      <h2 className="text-2xl font-bold text-blue-400 mb-4 flex justify-between items-center">
         Histórico de Feedbacks
         <Button variant="danger" size="sm" onClick={onClearHistory}>
           Limpar Histórico
         </Button>
       </h2>
-      <ul className="divide-y divide-gray-200">
+      <ul className="divide-y divide-gray-700">
         {[...feedbackHistory].sort((a, b) => b.timestamp - a.timestamp).map((feedback) => (
           <li key={feedback.id} className="py-4 flex flex-col sm:flex-row justify-between items-start sm:items-center">
             <div className="mb-2 sm:mb-0">
-              <p className="text-lg font-semibold text-gray-900">
-                {feedback.studentName} - <span className="text-blue-600">{feedback.activityTitle}</span>
+              <p className="text-lg font-semibold text-gray-100">
+                {feedback.studentName} - <span className="text-blue-400">{feedback.activityTitle}</span>
               </p>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-400">
                 UC: {feedback.uc} | Nota: {feedback.grade} |{' '}
                 {new Date(feedback.timestamp).toLocaleDateString()}
               </p>
@@ -76,17 +75,17 @@ const HistoryPanel: React.FC<HistoryPanelProps> = ({ feedbackHistory, onClearHis
 
       {selectedFeedback && (
         <Modal isOpen={!!selectedFeedback} onClose={closeModal} title="Detalhes do Feedback">
-          <p className="mb-2"><span className="font-semibold">Aluno:</span> {selectedFeedback.studentName}</p>
-          <p className="mb-2"><span className="font-semibold">Atividade:</span> {selectedFeedback.activityTitle}</p>
-          <p className="mb-2"><span className="font-semibold">UC:</span> {selectedFeedback.uc}</p>
-          <p className="mb-2"><span className="font-semibold">Nota:</span> {selectedFeedback.grade}</p>
-          <div className="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
-            <p className="font-semibold text-lg mb-2 text-blue-700">Mensagem Principal:</p>
-            <p className="whitespace-pre-wrap text-gray-800">
+          <p className="mb-2"><span className="font-semibold text-gray-200">Aluno:</span> {selectedFeedback.studentName}</p>
+          <p className="mb-2"><span className="font-semibold text-gray-200">Atividade:</span> {selectedFeedback.activityTitle}</p>
+          <p className="mb-2"><span className="font-semibold text-gray-200">UC:</span> {selectedFeedback.uc}</p>
+          <p className="mb-2"><span className="font-semibold text-gray-200">Nota:</span> {selectedFeedback.grade}</p>
+          <div className="mt-4 p-4 bg-gray-700 rounded-lg border border-gray-600">
+            <p className="font-semibold text-lg mb-2 text-blue-400">Mensagem Principal:</p>
+            <p className="whitespace-pre-wrap text-gray-100">
               {selectedFeedback.editedFeedback?.feedbackText || selectedFeedback.generatedFeedback.feedbackText}
             </p>
-            <p className="font-semibold text-lg mt-4 mb-2 text-blue-700">Sugestões:</p>
-            <ul className="list-disc list-inside text-gray-800">
+            <p className="font-semibold text-lg mt-4 mb-2 text-blue-400">Sugestões:</p>
+            <ul className="list-disc list-inside text-gray-100">
               {(selectedFeedback.editedFeedback?.actionableSuggestions || selectedFeedback.generatedFeedback.actionableSuggestions).map((suggestion, index) => (
                 <li key={index}>{suggestion}</li>
               ))}

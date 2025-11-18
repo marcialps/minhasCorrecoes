@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Button from './Button';
 import { GeneratedFeedbackContent } from '../types';
@@ -66,36 +65,36 @@ const FeedbackDisplay: React.FC<FeedbackDisplayProps> = ({
 
   if (!generatedFeedback) {
     return (
-      <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200 text-center text-gray-500">
+      <div className="bg-gray-800 p-6 rounded-lg shadow-md border border-gray-700 text-center text-gray-400">
         Nenhum feedback gerado ainda. Preencha o formulário para começar!
       </div>
     );
   }
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-xl border border-blue-100">
-      <h2 className="text-2xl font-bold text-blue-700 mb-4">Feedback Gerado</h2>
+    <div className="bg-gray-800 p-6 rounded-lg shadow-xl border border-blue-700">
+      <h2 className="text-2xl font-bold text-blue-400 mb-4">Feedback Gerado</h2>
       <div className="mb-6">
-        <label htmlFor="feedback-text" className="block text-lg font-semibold text-gray-800 mb-2">
+        <label htmlFor="feedback-text" className="block text-lg font-semibold text-gray-200 mb-2">
           Mensagem Principal:
         </label>
         <textarea
           id="feedback-text"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 resize-y min-h-[150px]"
+          className="w-full p-3 border border-gray-600 rounded-lg focus:ring-blue-400 focus:border-blue-400 resize-y min-h-[150px] bg-gray-700 text-gray-100"
           value={editableFeedback?.feedbackText || ''}
           onChange={handleTextChange}
         />
       </div>
 
       <div className="mb-6">
-        <label className="block text-lg font-semibold text-gray-800 mb-2">
+        <label className="block text-lg font-semibold text-gray-200 mb-2">
           Sugestões Acionáveis:
         </label>
         {editableFeedback?.actionableSuggestions.map((suggestion, index) => (
           <div key={index} className="flex items-center mb-2">
             <input
               type="text"
-              className="flex-grow p-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+              className="flex-grow p-2 border border-gray-600 rounded-lg focus:ring-blue-400 focus:border-blue-400 bg-gray-700 text-gray-100"
               value={suggestion}
               onChange={(e) => handleSuggestionChange(index, e)}
             />
@@ -114,7 +113,7 @@ const FeedbackDisplay: React.FC<FeedbackDisplayProps> = ({
         </Button>
       </div>
 
-      <div className="flex justify-end space-x-4 sticky bottom-0 bg-white pt-4 pb-2 -mx-6 px-6 border-t border-gray-200">
+      <div className="flex justify-end space-x-4 sticky bottom-0 bg-gray-800 pt-4 pb-2 -mx-6 px-6 border-t border-gray-700">
         <Button onClick={handleSave} variant="primary">
           Salvar Edições
         </Button>

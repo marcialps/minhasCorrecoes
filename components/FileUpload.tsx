@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Button from './Button';
 
@@ -43,7 +42,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileRead, isLoading }) => {
 
   return (
     <div className="mb-4">
-      <label htmlFor="file-upload" className="block text-sm font-medium text-gray-700 mb-1">
+      <label htmlFor="file-upload" className="block text-sm font-medium text-gray-300 mb-1">
         Anexar arquivo com enunciado (somente .txt)
       </label>
       <div className="flex items-center space-x-2">
@@ -61,7 +60,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ onFileRead, isLoading }) => {
         >
           {fileName ? 'Trocar arquivo' : 'Escolher arquivo'}
         </label>
-        {fileName && <span className="text-gray-600 text-sm">{fileName}</span>}
+        {fileName && <span className="text-gray-300 text-sm">{fileName}</span>}
       </div>
       {error && <p className="text-red-500 text-xs mt-2">{error}</p>}
     </div>

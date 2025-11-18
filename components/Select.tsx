@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 interface SelectOption {
@@ -19,11 +18,11 @@ const Select: React.FC<SelectProps> = ({
   className = '',
   ...props
 }) => {
-  const baseStyles = 'block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out bg-white';
+  const baseStyles = 'block w-full px-4 py-2 border border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-blue-400 focus:border-blue-400 transition duration-150 ease-in-out bg-gray-700 text-gray-100';
 
   return (
     <div className={`mb-4 ${className}`}>
-      <label htmlFor={id} className="block text-sm font-medium text-gray-700 mb-1">
+      <label htmlFor={id} className="block text-sm font-medium text-gray-300 mb-1">
         {label}
       </label>
       <select

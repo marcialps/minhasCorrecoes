@@ -1,4 +1,3 @@
-
 import { Type } from "@google/genai";
 
 export const GRADE_RANGES = [
@@ -24,7 +23,9 @@ export const GRADE_RANGES = [
   },
 ];
 
-export const SYSTEM_INSTRUCTION = `Você é um assistente de feedback para professores, especializado em gerar mensagens de retorno personalizadas, motivacionais, explicativas e coerentes com o desempenho do aluno. Seu objetivo é ajudar o professor a fornecer uma devolutiva construtiva e inspiradora. O feedback deve ser amigável e encorajador.`;
+export const SYSTEM_INSTRUCTION = `Você é um assistente de feedback para professores, especializado em gerar mensagens de retorno personalizadas, motivacionais, explicativas e coerentes com o desempenho do aluno. Seu objetivo é ajudar o professor a fornecer uma devolutiva construtiva e inspiradora. O feedback deve ser amigável e encorajador.
+
+Não mencione a nota numérica, o nome da atividade ou a Unidade Curricular diretamente na mensagem principal de feedback. Use essas informações apenas para contextualizar e moldar o tom e o conteúdo da sua resposta. O foco deve ser em como o aluno se saiu em relação ao enunciado da atividade, destacando pontos fortes e áreas para melhoria baseadas no conteúdo da atividade.`;
 
 export const FEEDBACK_PROMPT_TEMPLATE = (
   studentName: string,
@@ -34,8 +35,8 @@ export const FEEDBACK_PROMPT_TEMPLATE = (
   gradeDescription: string,
   activityPromptContent: string,
 ) => `
-Gere um feedback personalizado para o(a) aluno(a) ${studentName} na atividade "${activityTitle}" da Unidade Curricular "${uc}".
-A nota do(a) aluno(a) foi ${grade} (em uma escala de 0 a 10).
+Gere um feedback personalizado para o(a) aluno(a) ${studentName}.
+A nota do(a) aluno(a) foi ${grade} (em uma escala de 0 a 10) na atividade "${activityTitle}" da Unidade Curricular "${uc}".
 Considerando esta nota, o feedback deve ter o seguinte foco: ${gradeDescription}
 
 O enunciado da atividade é:
@@ -43,7 +44,8 @@ O enunciado da atividade é:
 ${activityPromptContent}
 \`\`\`
 
-A mensagem deve ser clara, construtiva e motivacional. Inclua menção ao nome do aluno e ao título da atividade.
+A mensagem de feedback deve ser clara, construtiva e motivacional. **Não mencione a nota numérica, o nome da atividade ou a Unidade Curricular diretamente na mensagem principal de feedback**. Em vez disso, use a nota e o conteúdo da atividade para inferir o desempenho do aluno e fornecer feedback específico que faça referência a elementos ou requisitos do enunciado da atividade.
+
 Forneça o feedback principal e uma lista separada de sugestões acionáveis ou pontos para reorientação, se aplicável.`;
 
 export const FEEDBACK_RESPONSE_SCHEMA = {
@@ -51,12 +53,12 @@ export const FEEDBACK_RESPONSE_SCHEMA = {
   properties: {
     feedbackText: {
       type: Type.STRING,
-      description: 'Uma mensagem de feedback motivacional, explicativa e coerente para o aluno.',
+      description: 'Uma mensagem de feedback motivacional, explicativa e coerente para o aluno, sem menção explícita à nota, título da atividade ou UC, mas contextualizada por eles e pelo enunciado.',
     },
     actionableSuggestions: {
       type: Type.ARRAY,
       items: { type: Type.STRING },
-      description: 'Sugestões específicas para melhoria, reorientação ou próximos passos com base na nota.',
+      description: 'Sugestões específicas para melhoria, reorientação ou próximos passos com base na nota e no enunciado da atividade.',
     },
   },
   required: ['feedbackText', 'actionableSuggestions'],

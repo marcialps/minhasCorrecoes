@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Header from './components/Header';
@@ -87,7 +86,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col">
+    <div className="min-h-screen bg-gray-900 flex flex-col">
       <Header />
       <main className="container mx-auto p-4 flex-grow">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -101,7 +100,7 @@ function App() {
               setError={setError}
             />
             {error && (
-              <div className="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+              <div className="mt-4 p-4 bg-red-800 border border-red-600 text-red-100 rounded-lg">
                 <p className="font-bold">Erro:</p>
                 <p>{error}</p>
               </div>
@@ -121,7 +120,7 @@ function App() {
           </div>
         </div>
       </main>
-      <footer className="bg-gray-800 text-white text-center p-4 mt-8">
+      <footer className="bg-gray-950 text-gray-200 text-center p-4 mt-8">
         <p>&copy; {new Date().getFullYear()} Gerador de Feedback Inteligente. Todos os direitos reservados.</p>
       </footer>
     </div>
