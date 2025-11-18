@@ -1,0 +1,5 @@
+
+{
+  "name": "Gerador de Feedback para Alunos",
+  "description": "Um sistema para professores gerarem feedback personalizado automaticamente para atividades de alunos, com base na nota e no enunciado da atividade."
+}
